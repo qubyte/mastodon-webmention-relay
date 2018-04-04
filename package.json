@@ -1,0 +1,26 @@
+{
+  "name": "mastodon-webmention-relay",
+  "version": "0.0.1",
+  "description": "Periodically call me to check for new toots by you and relay webmentions to URLs in them.",
+  "scripts": {
+    "start": "node ."
+  },
+  "dependencies": {
+    "express": "^4.16.3",
+    "mastodon": "^1.2.2",
+    "cheerio": "^0.22.0",
+    "send-webmention": "^1.0.1"
+  },
+  "engines": {
+    "node": "9.x"
+  },
+  "repository": {
+    "url": "https://glitch.com/edit/#!/my-glitch-app"
+  },
+  "license": "MIT",
+  "keywords": [
+    "node",
+    "glitch",
+    "express"
+  ]
+}
