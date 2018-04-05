@@ -1,5 +1,7 @@
 # Mastodon Webmention Relay
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/qubyte/mastodon-webmention-relay.svg)](https://greenkeeper.io/)
+
 1. Remix this glitch.
 1. Get a Mastodon API token.
 1. Put it into .env (don't worry, it's hidden from non-collaborators).
