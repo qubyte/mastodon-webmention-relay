@@ -9,7 +9,11 @@ function sendWebmention(source, target, ua) {
   }); 
 }
 
-module.exports = async function processStatus({ content, url }) {
+module.exports = async function processStatus({ content, url, visibility }) {
+  if (visibility !== 'public') {
+    return 0;
+  }
+  
   const $ = cheerio.load(content);
   const links = [...new Set($('a').toArray().map(a => $(a).attr('href')))]; // Dedupes.
   
