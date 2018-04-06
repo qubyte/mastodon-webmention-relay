@@ -14,13 +14,7 @@ const client = new require('mastodon')({
 
 function getId() {
   return new Promise((resolve, reject) => {
-    client.get('/accounts/verify_credentials', (err, data) => {
-      if (err) {
-        return reject(err);
-      }
-
-      resolve(data.id);
-    });
+    client.get('/accounts/verify_credentials', (err, data) => err ? reject(err) : resolve(data.id));
   });
 }
 
@@ -28,13 +22,7 @@ function getNewStatuses(clientId, sinceId) {
   const query = sinceId ? `?since_id=${sinceId}` : '';
   
   return new Promise((resolve, reject) => {
-    client.get(`accounts/${clientId}/statuses${query}`, (err, data) => {
-      if (err) {
-        return reject(err);
-      }
-
-      resolve(data);
-    });
+    client.get(`accounts/${clientId}/statuses${query}`, (err, data) => err ? reject(err) : resolve(data));
   });
 }
 
@@ -58,6 +46,9 @@ async function writeLastReadStatus(id) {
 
 exports.getStatuses = async function getStatuses() {
   const clientId = await getId();
+  
+  console.log(`Client ID: ${clientId}`);
+  
   const lastReadStatusId = await getLastReadStatus();
   const newStatuses = await getNewStatuses(clientId, lastReadStatusId);
   
